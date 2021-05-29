@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Twoj e-mail to: {{ email }}</h1>
+    <div v-if="email.length < 10">Ale masz krotki adres!</div>
+    <div v-else-if="email.length < 15">Twoj adres e-mail jest w sam raz.</div>
+    <div v-else > Twoj adres e-mail jest stanowczo za dlugi.</div>
+
+    <input type="email" v-model="email">
+
+    <button @click="alertMyEmail()">Wyswietl moj e-mail w alercie</button>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+data() {
+  return {
+    email: 'zaleksandra@student.agh.edu.pl',
+    password: ''
+  };
+},
+  methods: {
+  alertMyEmail() {
+    alert(this.email);
   }
 }
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
